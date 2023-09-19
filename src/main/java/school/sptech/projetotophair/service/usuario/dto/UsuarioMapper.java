@@ -1,6 +1,7 @@
 package school.sptech.projetotophair.service.usuario.dto;
 
 import school.sptech.projetotophair.domain.usuario.Usuario;
+import school.sptech.projetotophair.service.usuario.autenticacao.dto.UsuarioTokenDto;
 
 public class UsuarioMapper {
     public static Usuario of(UsuarioCriacaoDto usuarioCriacaoDto) {
@@ -13,5 +14,16 @@ public class UsuarioMapper {
         usuario.setProfissional(usuarioCriacaoDto.getProfissional());
 
         return usuario;
+    }
+
+    public static UsuarioTokenDto of(Usuario usuario, String token) {
+        UsuarioTokenDto usuarioTokenDto = new UsuarioTokenDto();
+
+        usuarioTokenDto.setUserId(usuario.getId());
+        usuarioTokenDto.setEmail(usuario.getEmail());
+        usuarioTokenDto.setNomeCompleto(usuario.getNomeCompleto());
+        usuarioTokenDto.setToken(token);
+
+        return usuarioTokenDto;
     }
 }
