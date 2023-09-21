@@ -18,15 +18,12 @@ import school.sptech.projetotophair.service.usuario.dto.UsuarioMapper;
 
 @Service
 public class UsuarioService {
-
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
     private UsuarioRepository usuarioRepository;
-
     @Autowired
     private GerenciadorTokenJwt gerenciadorTokenJwt;
-
     @Autowired
     private AuthenticationManager authenticationManager;
 
