@@ -4,15 +4,28 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String cpf;
+    @Size(min = 8, max = 80)
+    @NotBlank
     private String nomeCompleto;
+    @Email
+    @NotBlank
+    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$")
     private String email;
+    @Size(min = 6, max = 100)
+    @NotBlank
     private String senha;
     private String telefone;
     private Boolean isProfissional;
