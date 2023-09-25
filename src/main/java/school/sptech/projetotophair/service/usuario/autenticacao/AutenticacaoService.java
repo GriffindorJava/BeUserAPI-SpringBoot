@@ -21,7 +21,6 @@ public class AutenticacaoService implements UserDetailsService{
         Optional<Usuario> usuarioOpt = usuarioRepository.findByEmail(username);
 
         if (usuarioOpt.isEmpty()) {
-
             throw new UsernameNotFoundException(String.format("usuario: %s nao encontrado", username));
         }
 
