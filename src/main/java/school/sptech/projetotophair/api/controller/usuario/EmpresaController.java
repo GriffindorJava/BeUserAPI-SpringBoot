@@ -17,13 +17,13 @@ public class EmpresaController {
     private EmpresaRepository empresaRepository;
 
     @PostMapping
-    public ResponseEntity<Empresa> cadastrar(@RequestBody Empresa empresa) {
+    public ResponseEntity<Empresa> cadastrar(@Valid @RequestBody Empresa empresa) {
         this.empresaRepository.save(empresa);
         return ResponseEntity.status(200).body(empresa);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Empresa>> listar(@PathVariable Long id){
+    public ResponseEntity<Optional<Empresa>> listar(@Valid @PathVariable Long id){
         return ResponseEntity.ok(this.empresaRepository.findById(id));
     }
 
@@ -32,7 +32,7 @@ public class EmpresaController {
             @PathVariable Long id,
             @RequestBody @Valid Empresa empresa
     ) {
-        empresa.setId(id);
+        empresa.setIdEmpresa(id);
 
         if (this.empresaRepository.existsById(id)) {
             Empresa empresaAtualizada = this.empresaRepository.save(empresa);

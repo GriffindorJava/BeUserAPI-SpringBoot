@@ -1,20 +1,22 @@
 package school.sptech.projetotophair.domain.usuario;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CPF;
+import school.sptech.projetotophair.domain.agenda.Agenda;
+import school.sptech.projetotophair.domain.empresa.Empresa;
+import school.sptech.projetotophair.domain.endereco.Endereco;
+import school.sptech.projetotophair.domain.pagamento.Pagamento;
+import school.sptech.projetotophair.domain.servico.Servico;
 
 @Entity
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idUsuario;
     @NotBlank
     private String cpf;
     @Size(min = 8, max = 80)
@@ -29,13 +31,68 @@ public class Usuario {
     private String senha;
     private String telefone;
     private Boolean isProfissional;
+    @ManyToOne
+    @JoinColumn(name = "fkServico", referencedColumnName = "idServico")
+    private Servico servico;
+    @ManyToOne
+    @JoinColumn(name = "fkAgenda", referencedColumnName = "idAgenda")
+    private Agenda agenda;
+    @ManyToOne
+    @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
+    private Empresa empresa;
+    @OneToOne
+    @JoinColumn(name = "fkEndereco", referencedColumnName = "idEndereco")
+    private Endereco endereco;
+    @OneToOne
+    @JoinColumn(name = "fkPagamento", referencedColumnName = "idPagamento")
+    private Pagamento pagamento;
 
-    public Long getId() {
-        return id;
+    public Long getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Servico getServico() {
+        return servico;
+    }
+
+    public void setServico(Servico servico) {
+        this.servico = servico;
+    }
+
+    public Agenda getAgenda() {
+        return agenda;
+    }
+
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public Pagamento getPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(Pagamento pagamento) {
+        this.pagamento = pagamento;
     }
 
     public String getCpf() {
