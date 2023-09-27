@@ -1,19 +1,18 @@
 package school.sptech.projetotophair.domain.endereco;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import school.sptech.projetotophair.domain.empresa.Empresa;
+import school.sptech.projetotophair.domain.historicoservico.HistoricoServico;
 
 @Entity
 public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idEndereco;
     @Size(min = 3, max = 50)
     private String logradouro;
 
@@ -27,12 +26,12 @@ public class Endereco {
     @Size(min = 9, max = 9)
     private String cep;
 
-    public Long getId() {
-        return id;
+    public Long getIdEndereco() {
+        return idEndereco;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdEndereco(Long idEndereco) {
+        this.idEndereco = idEndereco;
     }
 
     public String getLogradouro() {

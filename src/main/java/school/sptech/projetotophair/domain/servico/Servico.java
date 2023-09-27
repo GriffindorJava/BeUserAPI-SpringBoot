@@ -1,20 +1,20 @@
 package school.sptech.projetotophair.domain.servico;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import school.sptech.projetotophair.domain.agenda.Agenda;
+import school.sptech.projetotophair.domain.empresa.Empresa;
+import java.util.List;
 
 
 @Entity
 public class Servico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idServico;
     @Size(min = 4, max = 40)
     @NotBlank
     private String nomeServico;
@@ -26,13 +26,35 @@ public class Servico {
     @Pattern(regexp = "^([01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$")
     @NotBlank
     private String qtdTempoServico;
+    @OneToOne
+    @JoinColumn(name = "fkAgenda", referencedColumnName = "idAgenda")
+    private Agenda agenda;
+    @ManyToOne
+    @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
+    private Empresa empresa;
 
-    public Long getId() {
-        return id;
+    public Empresa getEmpresa() {
+        return empresa;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+    public Long getIdServico() {
+        return idServico;
+    }
+
+    public void setIdServico(Long idServico) {
+        this.idServico = idServico;
+    }
+
+    public Agenda getAgenda() {
+        return agenda;
+    }
+
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
     }
 
     public String getNomeServico() {

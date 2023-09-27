@@ -1,17 +1,15 @@
 package school.sptech.projetotophair.domain.historicoservico;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import school.sptech.projetotophair.domain.agenda.Agenda;
 
 
 @Entity
 public class HistoricoServico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idHistoricoServico;
     @NotNull
     private Integer ano;
     @NotNull
@@ -21,12 +19,16 @@ public class HistoricoServico {
     @NotNull
     private Double faturamento;
 
-    public Long getId() {
-        return id;
+    @OneToOne
+    @JoinColumn(name = "fkAgenda", referencedColumnName = "idAgenda")
+    private Agenda agenda;
+
+    public Long getIdHistoricoServico() {
+        return idHistoricoServico;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdHistoricoServico(Long idHistoricoServico) {
+        this.idHistoricoServico = idHistoricoServico;
     }
 
     public Integer getAno() {
@@ -60,4 +62,13 @@ public class HistoricoServico {
     public void setFaturamento(Double faturamento) {
         this.faturamento = faturamento;
     }
+
+    public Agenda getAgenda() {
+        return agenda;
+    }
+
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
+    }
+
 }

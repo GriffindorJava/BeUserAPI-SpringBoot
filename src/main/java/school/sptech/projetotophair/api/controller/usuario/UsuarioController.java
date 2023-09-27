@@ -35,13 +35,13 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UsuarioTokenDto> login(@RequestBody UsuarioLoginDto usuarioLoginDto) {
+    public ResponseEntity<UsuarioTokenDto> login(@Valid @RequestBody UsuarioLoginDto usuarioLoginDto) {
         UsuarioTokenDto usuarioTokenDto = this.usuarioService.autenticar(usuarioLoginDto);
         return ResponseEntity.status(200).body(usuarioTokenDto);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Usuario>> listar(@PathVariable Long id){
+    public ResponseEntity<Optional<Usuario>> listar(@Valid @PathVariable Long id){
         return ResponseEntity.ok(this.usuarioRepository.findById(id));
     }
 
@@ -50,7 +50,7 @@ public class UsuarioController {
             @PathVariable Long id,
             @RequestBody @Valid Usuario usuario
     ) {
-        usuario.setId(id);
+        usuario.setIdUsuario(id);
 
         if (this.usuarioRepository.existsById(id)) {
             Usuario usuariotualizado = this.usuarioRepository.save(usuario);
@@ -61,7 +61,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> remover(@PathVariable Long id) {
+    public ResponseEntity<Void> remover(@Valid @PathVariable Long id) {
 
         if (this.usuarioRepository.existsById(id)) {
             this.usuarioRepository.deleteById(id);

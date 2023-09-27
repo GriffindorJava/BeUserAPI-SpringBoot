@@ -1,12 +1,12 @@
 package school.sptech.projetotophair.domain.agenda;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import school.sptech.projetotophair.domain.empresa.Empresa;
+import school.sptech.projetotophair.domain.historicoservico.HistoricoServico;
+import school.sptech.projetotophair.domain.servico.Servico;
 
 import java.time.LocalDate;
 
@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Agenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idAgenda;
     @FutureOrPresent
     @NotBlank
     private LocalDate data;
@@ -24,12 +24,12 @@ public class Agenda {
     @NotBlank
     private Status status;
 
-    public Long getId() {
-        return id;
+    public Long getIdAgenda() {
+        return idAgenda;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdAgenda(Long idAgenda) {
+        this.idAgenda = idAgenda;
     }
 
     public LocalDate getData() {
@@ -55,4 +55,5 @@ public class Agenda {
     public void setStatus(Status status) {
         this.status = status;
     }
+
 }
