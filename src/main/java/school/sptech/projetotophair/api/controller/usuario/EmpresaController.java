@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.domain.empresa.repository.EmpresaRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -19,12 +20,17 @@ public class EmpresaController {
     @PostMapping
     public ResponseEntity<Empresa> cadastrar(@Valid @RequestBody Empresa empresa) {
         this.empresaRepository.save(empresa);
-        return ResponseEntity.status(200).body(empresa);
+        return ResponseEntity.status(201).body(empresa);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Empresa>> listar(@Valid @PathVariable Long id){
         return ResponseEntity.ok(this.empresaRepository.findById(id));
+    }
+
+    @GetMapping("/estado")
+    public ResponseEntity<List<Empresa>> listarPorEstado(@Valid @RequestParam String estado){
+        return ResponseEntity.ok(this.empresaRepository.findByEnderecoEstado(estado));
     }
 
     @PutMapping("/{id}")
