@@ -1,4 +1,4 @@
-package school.sptech.projetotophair.api.controller.usuario;
+package school.sptech.projetotophair.api.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

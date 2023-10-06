@@ -1,4 +1,4 @@
-package school.sptech.projetotophair.service.usuario.autenticacao.dto;
+package school.sptech.projetotophair.service.autenticacao.dto;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

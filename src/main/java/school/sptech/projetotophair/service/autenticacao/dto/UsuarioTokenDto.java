@@ -1,4 +1,4 @@
-package school.sptech.projetotophair.service.usuario.autenticacao.dto;
+package school.sptech.projetotophair.service.autenticacao.dto;
 
 public class UsuarioTokenDto {
     private Long userId;

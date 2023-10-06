@@ -1,7 +1,7 @@
-package school.sptech.projetotophair.service.usuario.dto;
+package school.sptech.projetotophair.service.dto;
 
 import school.sptech.projetotophair.domain.usuario.Usuario;
-import school.sptech.projetotophair.service.usuario.autenticacao.dto.UsuarioTokenDto;
+import school.sptech.projetotophair.service.autenticacao.dto.UsuarioTokenDto;
 
 public class UsuarioMapper {
     public static Usuario of(UsuarioCriacaoDto usuarioCriacaoDto) {

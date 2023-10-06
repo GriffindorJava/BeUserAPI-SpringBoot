@@ -12,9 +12,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import org.springframework.web.filter.OncePerRequestFilter;
 import school.sptech.projetotophair.api.configuration.security.jwt.GerenciadorTokenJwt;
-import school.sptech.projetotophair.service.usuario.autenticacao.AutenticacaoService;
+import school.sptech.projetotophair.service.autenticacao.AutenticacaoService;
 
 import java.io.IOException;
 import java.util.Objects;
