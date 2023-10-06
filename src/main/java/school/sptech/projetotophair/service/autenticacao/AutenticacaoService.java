@@ -1,4 +1,4 @@
-package school.sptech.projetotophair.service.usuario.autenticacao;
+package school.sptech.projetotophair.service.autenticacao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
-import school.sptech.projetotophair.service.usuario.autenticacao.dto.UsuarioDetalhesDto;
+import school.sptech.projetotophair.service.autenticacao.dto.UsuarioDetalhesDto;
 
 import java.util.Optional;
 

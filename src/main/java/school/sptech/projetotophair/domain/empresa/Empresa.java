@@ -19,9 +19,7 @@ public class Empresa {
     @NotBlank
     @Size(min = 14, max = 14)
     private String cnpj;
-    @DecimalMin("0.0")
-    @DecimalMax("5.0")
-    private Double mediaAvaliacao;
+
     @OneToOne
     @JoinColumn(name = "fkEndereco", referencedColumnName = "idEndereco")
     private Endereco endereco;
