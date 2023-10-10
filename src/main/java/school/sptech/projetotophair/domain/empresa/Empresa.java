@@ -56,11 +56,4 @@ public class Empresa {
         this.cnpj = cnpj;
     }
 
-    public Double getMediaAvaliacao() {
-        return mediaAvaliacao;
-    }
-
-    public void setMediaAvaliacao(Double mediaAvaliacao) {
-        this.mediaAvaliacao = mediaAvaliacao;
-    }
 }
