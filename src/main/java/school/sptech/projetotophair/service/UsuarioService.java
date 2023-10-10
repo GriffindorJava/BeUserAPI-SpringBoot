@@ -2,6 +2,7 @@ package school.sptech.projetotophair.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -31,6 +32,10 @@ public class UsuarioService {
     private AuthenticationManager authenticationManager;
 
     public void criar(UsuarioCriacaoDto usuarioCriacaoDto) {
+        if (usuarioRepository.existsByEmail(usuarioCriacaoDto.getEmail())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
         final Usuario novoUsuario = UsuarioMapper.of(usuarioCriacaoDto);
 
         String senhaCriptografada = passwordEncoder.encode(novoUsuario.getSenha());

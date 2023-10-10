@@ -9,7 +9,6 @@ import org.hibernate.validator.constraints.br.CPF;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.domain.endereco.Endereco;
-import school.sptech.projetotophair.domain.pagamento.Pagamento;
 import school.sptech.projetotophair.domain.servico.Servico;
 
 @Entity
@@ -43,9 +42,7 @@ public class Usuario {
     @OneToOne
     @JoinColumn(name = "fkEndereco", referencedColumnName = "idEndereco")
     private Endereco endereco;
-    @OneToOne
-    @JoinColumn(name = "fkPagamento", referencedColumnName = "idPagamento")
-    private Pagamento pagamento;
+
 
     public Long getIdUsuario() {
         return idUsuario;
@@ -85,14 +82,6 @@ public class Usuario {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
-    }
-
-    public Pagamento getPagamento() {
-        return pagamento;
-    }
-
-    public void setPagamento(Pagamento pagamento) {
-        this.pagamento = pagamento;
     }
 
     public String getCpf() {
