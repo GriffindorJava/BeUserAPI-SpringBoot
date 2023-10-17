@@ -1,10 +1,7 @@
 package school.sptech.projetotophair.domain.usuario;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.br.CPF;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.empresa.Empresa;
@@ -36,6 +33,8 @@ public class Usuario {
     @ManyToOne
     @JoinColumn(name = "fkAgenda", referencedColumnName = "idAgenda")
     private Agenda agenda;
+
+    @NotBlank
     @ManyToOne
     @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
     private Empresa empresa;

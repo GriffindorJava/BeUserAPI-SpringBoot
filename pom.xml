@@ -97,6 +97,14 @@
 			<artifactId>httpclient</artifactId>
 			<version>4.5.13</version> <!-- Verifique a versão mais recente no repositório Maven -->
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
