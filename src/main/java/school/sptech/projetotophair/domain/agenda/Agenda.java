@@ -22,7 +22,7 @@ public class Agenda {
     @Pattern(regexp = "^([01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$")
     private String hora;
     @NotBlank
-    private Status status;
+    private String status;
 
     public Long getIdAgenda() {
         return idAgenda;
@@ -48,12 +48,11 @@ public class Agenda {
         this.hora = hora;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
-
 }
