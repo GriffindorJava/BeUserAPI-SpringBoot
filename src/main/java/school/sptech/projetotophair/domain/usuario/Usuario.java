@@ -34,7 +34,6 @@ public class Usuario {
     @JoinColumn(name = "fkAgenda", referencedColumnName = "idAgenda")
     private Agenda agenda;
 
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
     private Empresa empresa;
