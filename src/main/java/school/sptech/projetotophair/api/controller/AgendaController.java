@@ -33,11 +33,7 @@ public class AgendaController {
             @RequestBody Agenda agenda
     ) {
         Optional<Agenda> agendaAtualizada = agendaService.atualizarAgenda(id, agenda);
-        if (agendaAtualizada.isPresent()) {
             return ResponseEntity.status(200).body(agendaAtualizada.get());
-        } else {
-            return ResponseEntity.status(404).build();
-        }
     }
 
     @DeleteMapping("/{id}")

@@ -33,11 +33,7 @@ public class HistoricoServicoController {
             @RequestBody HistoricoServico historicoServico
     ) {
         Optional<HistoricoServico> historicoServicoAtualizado = historicoServicoService.atualizarHistoricoServico(id, historicoServico);
-        if (historicoServicoAtualizado.isPresent()) {
             return ResponseEntity.status(200).body(historicoServicoAtualizado.get());
-        } else {
-            return ResponseEntity.status(404).build();
-        }
     }
 
     @DeleteMapping("/{id}")

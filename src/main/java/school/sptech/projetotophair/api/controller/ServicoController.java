@@ -45,11 +45,7 @@ public class ServicoController {
             @RequestBody Servico servico
     ) {
         Optional<Servico> servicoAtualizado = servicoService.atualizarServico(id, servico);
-        if (servicoAtualizado.isPresent()) {
             return ResponseEntity.status(200).body(servicoAtualizado.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
     }
 
     @DeleteMapping("/{id}")

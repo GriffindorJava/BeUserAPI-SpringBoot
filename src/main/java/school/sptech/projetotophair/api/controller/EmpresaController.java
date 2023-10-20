@@ -40,11 +40,7 @@ public class EmpresaController {
             @RequestBody Empresa empresa
     ) {
         Optional<Empresa> empresaAtualizada = empresaService.atualizarEmpresa(id, empresa);
-        if (empresaAtualizada.isPresent()) {
             return ResponseEntity.status(200).body(empresaAtualizada.get());
-        } else {
-            return ResponseEntity.status(404).build();
-        }
     }
 
     @DeleteMapping("/{id}")

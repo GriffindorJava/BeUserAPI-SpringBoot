@@ -33,11 +33,7 @@ public class EnderecoController {
             @RequestBody Endereco endereco
     ) {
         Optional<Endereco> enderecoAtualizado = enderecoService.atualizarEndereco(id, endereco);
-        if (enderecoAtualizado.isPresent()) {
             return ResponseEntity.status(200).body(enderecoAtualizado.get());
-        } else {
-            return ResponseEntity.status(404).build();
-        }
     }
 
     @DeleteMapping("/{id}")
