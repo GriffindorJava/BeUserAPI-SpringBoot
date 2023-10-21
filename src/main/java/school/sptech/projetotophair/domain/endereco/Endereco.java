@@ -26,6 +26,16 @@ public class Endereco {
     @Size(min = 9, max = 9)
     private String cep;
 
+    public Endereco(Long idEndereco, String logradouro, Integer numero, String estado, String complemento, String cidade, String cep) {
+        this.idEndereco = idEndereco;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.estado = estado;
+        this.complemento = complemento;
+        this.cidade = cidade;
+        this.cep = cep;
+    }
+
     public Long getIdEndereco() {
         return idEndereco;
     }

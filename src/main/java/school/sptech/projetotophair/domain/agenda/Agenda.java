@@ -24,6 +24,13 @@ public class Agenda {
     @NotBlank
     private String status;
 
+    public Agenda(Long idAgenda, LocalDate data, String hora, String status) {
+        this.idAgenda = idAgenda;
+        this.data = data;
+        this.hora = hora;
+        this.status = status;
+    }
+
     public Long getIdAgenda() {
         return idAgenda;
     }

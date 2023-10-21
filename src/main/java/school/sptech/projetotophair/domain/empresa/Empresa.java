@@ -24,6 +24,13 @@ public class Empresa {
     @JoinColumn(name = "fkEndereco", referencedColumnName = "idEndereco")
     private Endereco endereco;
 
+    public Empresa(Long idEmpresa, String razaoSocial, String cnpj, Endereco endereco) {
+        this.idEmpresa = idEmpresa;
+        this.razaoSocial = razaoSocial;
+        this.cnpj = cnpj;
+        this.endereco = endereco;
+    }
+
     public Endereco getEndereco() {
         return endereco;
     }

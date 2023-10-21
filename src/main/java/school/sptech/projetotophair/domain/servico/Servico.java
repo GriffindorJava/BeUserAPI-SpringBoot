@@ -33,6 +33,16 @@ public class Servico {
     @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
     private Empresa empresa;
 
+    public Servico(Long idServico, String nomeServico, String descricao, Double preco, String qtdTempoServico, Agenda agenda, Empresa empresa) {
+        this.idServico = idServico;
+        this.nomeServico = nomeServico;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.qtdTempoServico = qtdTempoServico;
+        this.agenda = agenda;
+        this.empresa = empresa;
+    }
+
     public Empresa getEmpresa() {
         return empresa;
     }
