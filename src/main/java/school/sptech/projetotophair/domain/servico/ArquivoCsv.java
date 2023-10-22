@@ -8,7 +8,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Formatter;
 import java.util.FormatterClosedException;
 import java.util.NoSuchElementException;
@@ -35,15 +38,24 @@ public class ArquivoCsv {
 
         // Bloco try-catch para gravar o arquivo
         try {
-            for (int i=0; i < lista.getTamanho(); i++) {
+            for (int i = 0; i < lista.getTamanho(); i++) {
                 Servico p = lista.getElemento(i);
-                saida.format("%d;%s;%s;%.2f;%s;%s;%s\n",p.getIdServico(),
+
+                // Converte LocalDate para LocalDateTime com horário 00:00
+                LocalDate dataLocalDate = p.getAgenda().getData();
+                LocalDateTime dataLocalDateTime = dataLocalDate.atStartOfDay();
+
+                // Formatar a data
+                DateTimeFormatter formatoBrasileiro = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+                String dataFormatada = dataLocalDateTime.format(formatoBrasileiro);
+
+                saida.format("%d;%s;%s;%.2f;%s;%s;%s\n", p.getIdServico(),
                         p.getNomeServico(),
                         p.getDescricao(),
                         p.getPreco(),
                         p.getQtdTempoServico(),
-                        p.getAgenda(),
-                        p.getEmpresa());
+                        dataFormatada, // Utilizar a data formatada
+                        p.getEmpresa().getRazaoSocial());
             }
         }
         catch (FormatterClosedException erro) {
@@ -83,7 +95,7 @@ public class ArquivoCsv {
 
 
         try {
-            System.out.printf("%-4S %-16S %-15S %-5S %-11S %-10S %-20S\n","id","Servico","descricao","preco","qtdTempoServico",
+            System.out.printf("%-4S %-20S %-50S %-5S %-17S %19S %-50S\n","id","Serviço","Descrição","Preço","Tempo de Serviço",
                     "Agenda", "Empresa");
             while (entrada.hasNext()) {
                 Long id = entrada.nextLong();
@@ -93,7 +105,7 @@ public class ArquivoCsv {
                 String qtdTempoServico = entrada.next();
                 String agenda = entrada.next();
                 String empresa = entrada.next();
-                System.out.printf("%04d %-16s %-15s %5.1f %11s %50s %50s\n", id, Servico, descricao, preco, qtdTempoServico, agenda, empresa);
+                System.out.printf("%04d %-20s %-50s %5.1f %-17s %19s %-50s\n", id, Servico, descricao, preco, qtdTempoServico, agenda, empresa);
             }
         }
         catch(NoSuchElementException erro) {
@@ -121,11 +133,11 @@ public class ArquivoCsv {
 
         ListaObj<Servico> lista = new ListaObj<>(5);
 
-        lista.adiciona(new Servico(1L, "cabelo", "corta cabelo",
-                10.50, "2", new Agenda(1L, LocalDate.now(),"2", "sim"),
-                new Empresa(2L, "umdoistreisquatro", "12345678912345" ,
-                        new Endereco(3L,"rua dois", 5, "São paulo",
-                                "portao zzz", "São paulo tb", "123456789")
+        lista.adiciona(new Servico(1L, "Hidratação", "Hidrata o cabelo com produtos de qualidade.",
+                100.50, "1 hora", new Agenda(1L, LocalDate.now(),"1", "sim"),
+                new Empresa(2L, "Carmens Cabelo & Vida.", "12.356.444.0001/45" ,
+                        new Endereco(3L,"rua dois", 5, "São Paulo",
+                                "A", "São Paulo", "12345-089")
                 )));
 
        gravaArquivoCsv(lista, "Servico");
