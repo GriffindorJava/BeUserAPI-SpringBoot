@@ -36,6 +36,10 @@ public class Endereco {
         this.cep = cep;
     }
 
+    public Endereco() {
+
+    }
+
     public Long getIdEndereco() {
         return idEndereco;
     }

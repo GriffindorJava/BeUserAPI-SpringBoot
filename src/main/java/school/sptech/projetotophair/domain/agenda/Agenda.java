@@ -31,6 +31,9 @@ public class Agenda {
         this.status = status;
     }
 
+    public Agenda() {
+    }
+
     public Long getIdAgenda() {
         return idAgenda;
     }

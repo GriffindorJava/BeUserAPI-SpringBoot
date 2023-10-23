@@ -14,7 +14,7 @@ import org.apache.http.impl.client.HttpClients;
 @RestController
 public class MapBoxController {
 
-    private static final String MAPBOX_ACCESS_TOKEN = ""; // Inserir token MapBox
+    private static final String MAPBOX_ACCESS_TOKEN = "pk.eyJ1Ijoic2l0YXZhcmVzIiwiYSI6ImNsbmpjcHJnbTB0OXQyam83MGl5MmFjZGkifQ.1Nm5ZlbXimV_j9Vb4f4FPg"; // Inserir token MapBox
     private static final String GEOCODING_API_URL = "https://api.mapbox.com/geocoding/v5/mapbox.places/";
 
     @GetMapping("/mapbox/directions")

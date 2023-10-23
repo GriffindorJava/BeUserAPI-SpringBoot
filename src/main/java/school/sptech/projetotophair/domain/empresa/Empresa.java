@@ -15,8 +15,6 @@ public class Empresa {
     @NotBlank
     @Size(min = 4, max = 50)
     private String razaoSocial;
-    @CNPJ
-    @NotBlank
     @Size(min = 14, max = 14)
     private String cnpj;
 
@@ -29,6 +27,10 @@ public class Empresa {
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
         this.endereco = endereco;
+    }
+
+    public Empresa() {
+
     }
 
     public Endereco getEndereco() {
