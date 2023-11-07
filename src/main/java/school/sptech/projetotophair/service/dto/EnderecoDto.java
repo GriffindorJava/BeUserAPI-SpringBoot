@@ -49,5 +49,21 @@ public class EnderecoDto {
         this.complemento = complemento;
     }
 
-    public String getCidade()
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+}
 

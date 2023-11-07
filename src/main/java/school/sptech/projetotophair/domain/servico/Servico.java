@@ -43,6 +43,10 @@ public class Servico {
         this.empresa = empresa;
     }
 
+    public Servico() {
+
+    }
+
     public Empresa getEmpresa() {
         return empresa;
     }

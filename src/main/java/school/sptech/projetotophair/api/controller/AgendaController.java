@@ -4,13 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import school.sptech.projetotophair.domain.agenda.Agenda;
+import school.sptech.projetotophair.domain.usuario.Usuario;
+import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 import school.sptech.projetotophair.service.AgendaService;
+import school.sptech.projetotophair.service.dto.UltimosAgendamentosDto;
+import school.sptech.projetotophair.service.dto.mapper.UltimosAgendamentosMapper;
 
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/agendas")
 public class AgendaController {
+
+    @Autowired
+    private UsuarioRepository u;
 
     @Autowired
     private AgendaService agendaService;
@@ -34,6 +41,19 @@ public class AgendaController {
     ) {
         Optional<Agenda> agendaAtualizada = agendaService.atualizarAgenda(id, agenda);
             return ResponseEntity.status(200).body(agendaAtualizada.get());
+    }
+
+    @GetMapping("/ultimos-agendamentos/{id}")
+    public ResponseEntity<UltimosAgendamentosDto> ultimosAgendamentos(@PathVariable Long id){
+        Optional<Usuario> all = u.findById(id);
+
+        if (all.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        UltimosAgendamentosDto dto = UltimosAgendamentosMapper.toDto(all.get());
+
+        return ResponseEntity.ok(dto);
     }
 
     @DeleteMapping("/{id}")

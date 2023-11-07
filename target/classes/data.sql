@@ -1,10 +1,10 @@
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
+INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Empresa, fk_Endereco)
 VALUES
-    ('66677788899', 'Frank Adams', 'frank@example.com', 'frank5678', '(55) 5555-7654', false, null, null, null, null),
-    ('77788899900', 'Grace Young', 'grace@example.com', 'grace2022', '(55) 5555-6543', true, null, null, null, null),
-    ('88899900011', 'Henry Brown', 'henry@example.com', 'henry111', '(55) 5555-5432', false, null, null, null, null),
-    ('99900011122', 'Isabel Garcia', 'isabel@example.com', 'isabel777', '(55) 5555-4321', true, null, null, null, null),
-    ('00011122233', 'Jack Anderson', 'jack@example.com', 'jack999', '(55) 5555-3210', false, null, null, null, null);
+    ('66677788899', 'Frank Adams', 'frank@example.com', 'frank5678', '(55) 5555-7654', false, null, null, null),
+    ('77788899900', 'Grace Young', 'grace@example.com', 'grace2022', '(55) 5555-6543', true, null, null, null),
+    ('88899900011', 'Henry Brown', 'henry@example.com', 'henry111', '(55) 5555-5432', false, null, null, null),
+    ('99900011122', 'Isabel Garcia', 'isabel@example.com', 'isabel777', '(55) 5555-4321', true, null, null, null),
+    ('00011122233', 'Jack Anderson', 'jack@example.com', 'jack999', '(55) 5555-3210', false, null, null, null);
 
 INSERT INTO Endereco (logradouro, numero, estado, complemento, cidade, cep)
 VALUES
@@ -70,3 +70,5 @@ VALUES
     (2023, 3, 8, 1250.00, 8),
     (2023, 3, 9, 920.00, 9),
     (2023, 4, 10, 1150.00, 10);
+
+Update Usuario set fk_servico = 1 where id_usuario = 1
