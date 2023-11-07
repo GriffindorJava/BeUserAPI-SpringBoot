@@ -31,10 +31,6 @@ public class Usuario {
     @JoinColumn(name = "fkServico", referencedColumnName = "idServico")
     private Servico servico;
     @ManyToOne
-    @JoinColumn(name = "fkAgenda", referencedColumnName = "idAgenda")
-    private Agenda agenda;
-
-    @ManyToOne
     @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
     private Empresa empresa;
     @OneToOne
@@ -56,14 +52,6 @@ public class Usuario {
 
     public void setServico(Servico servico) {
         this.servico = servico;
-    }
-
-    public Agenda getAgenda() {
-        return agenda;
-    }
-
-    public void setAgenda(Agenda agenda) {
-        this.agenda = agenda;
     }
 
     public Empresa getEmpresa() {
