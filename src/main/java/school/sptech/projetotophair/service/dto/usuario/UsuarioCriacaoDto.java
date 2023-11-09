@@ -1,4 +1,4 @@
-package school.sptech.projetotophair.service.dto;
+package school.sptech.projetotophair.service.dto.usuario;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;

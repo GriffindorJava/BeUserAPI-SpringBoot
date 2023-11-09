@@ -15,8 +15,8 @@ import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 import school.sptech.projetotophair.service.autenticacao.dto.UsuarioLoginDto;
 import school.sptech.projetotophair.service.autenticacao.dto.UsuarioTokenDto;
-import school.sptech.projetotophair.service.dto.UsuarioCriacaoDto;
-import school.sptech.projetotophair.service.dto.UsuarioMapper;
+import school.sptech.projetotophair.service.dto.usuario.UsuarioCriacaoDto;
+import school.sptech.projetotophair.service.dto.usuario.mapper.UsuarioMapper;
 
 import java.util.NoSuchElementException;
 
@@ -69,6 +69,11 @@ public class UsuarioService {
                 () -> new EntityNotFoundException("Usuário não encontrado com ID: " + id)
         );
         return usuario;
+    }
+
+    public Usuario buscarPorIdAvaliacao(Long id){
+        Usuario byAvaliacaoId = usuarioRepository.findByAvaliacaoId(id);
+        return byAvaliacaoId;
     }
 
     public Usuario atualizarUsuario(Long id, Usuario novoUsuario) {

@@ -1,4 +1,4 @@
-package school.sptech.projetotophair.service.dto;
+package school.sptech.projetotophair.service.dto.agenda;
 
 import java.time.LocalDate;
 

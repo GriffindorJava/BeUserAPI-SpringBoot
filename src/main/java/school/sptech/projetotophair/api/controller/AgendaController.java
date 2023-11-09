@@ -7,8 +7,8 @@ import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 import school.sptech.projetotophair.service.AgendaService;
-import school.sptech.projetotophair.service.dto.UltimosAgendamentosDto;
-import school.sptech.projetotophair.service.dto.mapper.UltimosAgendamentosMapper;
+import school.sptech.projetotophair.service.dto.agenda.UltimosAgendamentosDto;
+import school.sptech.projetotophair.service.dto.agenda.mapper.UltimosAgendamentosMapper;
 
 import java.util.Optional;
 

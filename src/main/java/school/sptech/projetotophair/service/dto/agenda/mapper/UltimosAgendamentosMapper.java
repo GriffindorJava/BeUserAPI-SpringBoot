@@ -1,8 +1,8 @@
-package school.sptech.projetotophair.service.dto.mapper;
+package school.sptech.projetotophair.service.dto.agenda.mapper;
 
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.usuario.Usuario;
-import school.sptech.projetotophair.service.dto.UltimosAgendamentosDto;
+import school.sptech.projetotophair.service.dto.agenda.UltimosAgendamentosDto;
 
 public class UltimosAgendamentosMapper {
 

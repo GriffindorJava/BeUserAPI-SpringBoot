@@ -2,11 +2,15 @@ package school.sptech.projetotophair.domain.usuario;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.Getter;
 import org.hibernate.validator.constraints.br.CPF;
 import school.sptech.projetotophair.domain.agenda.Agenda;
+import school.sptech.projetotophair.domain.avaliacao.Avaliacao;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.domain.endereco.Endereco;
 import school.sptech.projetotophair.domain.servico.Servico;
+
+import java.util.List;
 
 @Entity
 public class Usuario {
@@ -31,12 +35,18 @@ public class Usuario {
     @JoinColumn(name = "fkServico", referencedColumnName = "idServico")
     private Servico servico;
     @ManyToOne
+    @JoinColumn(name = "fkAgenda", referencedColumnName = "idAgenda")
+    private Agenda agenda;
+
+    @ManyToOne
     @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
     private Empresa empresa;
     @OneToOne
     @JoinColumn(name = "fkEndereco", referencedColumnName = "idEndereco")
     private Endereco endereco;
 
+    @OneToMany(mappedBy = "usuario")
+    List<Avaliacao> avaliacoes;
 
     public Long getIdUsuario() {
         return idUsuario;
@@ -52,6 +62,14 @@ public class Usuario {
 
     public void setServico(Servico servico) {
         this.servico = servico;
+    }
+
+    public Agenda getAgenda() {
+        return agenda;
+    }
+
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
     }
 
     public Empresa getEmpresa() {
@@ -116,5 +134,9 @@ public class Usuario {
 
     public void setProfissional(Boolean profissional) {
         isProfissional = profissional;
+    }
+
+    public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+        this.avaliacoes = avaliacoes;
     }
 }

@@ -6,11 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import school.sptech.projetotophair.domain.usuario.Usuario;
-import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 import school.sptech.projetotophair.service.UsuarioService;
 import school.sptech.projetotophair.service.autenticacao.dto.UsuarioLoginDto;
 import school.sptech.projetotophair.service.autenticacao.dto.UsuarioTokenDto;
-import school.sptech.projetotophair.service.dto.UsuarioCriacaoDto;
+import school.sptech.projetotophair.service.dto.usuario.UsuarioAvaliacaoResponseDto;
+import school.sptech.projetotophair.service.dto.usuario.UsuarioCriacaoDto;
+import school.sptech.projetotophair.service.dto.usuario.mapper.UsuarioMapper;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -35,7 +36,20 @@ public class UsuarioController {
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> buscarPorid(@Valid @PathVariable Long id){
         Usuario usuario = this.usuarioService.buscarPorId(id);
+        if (usuario == null) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok().body(usuario);
+    }
+
+    @GetMapping("/avaliacao/{id}")
+    public ResponseEntity<UsuarioAvaliacaoResponseDto> buscarPorIdAvaliacao(@PathVariable Long id){
+        Usuario usuario = usuarioService.buscarPorIdAvaliacao(id);
+        if (usuario == null) {
+            return ResponseEntity.notFound().build();
+        }
+        UsuarioAvaliacaoResponseDto usuarioAvaliacaoResponseDto = UsuarioMapper.toUsuarioAvaliacaoResponseDto(usuario);
+        return ResponseEntity.ok(usuarioAvaliacaoResponseDto);
     }
 
     @PutMapping("/{id}")
