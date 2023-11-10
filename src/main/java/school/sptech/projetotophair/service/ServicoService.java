@@ -24,6 +24,16 @@ public class ServicoService {
         }
     }
 
+    public List<Servico> buscarServicosPorEmpresaId(Long id){
+        List<Servico> servicosByEmpresaId = servicoRepository.findServicosByEmpresaId(id);
+
+        if (servicosByEmpresaId.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Serviços não encontrados para essa empresa");
+        }
+
+        return servicosByEmpresaId;
+    }
+
     public Optional<Servico> buscarServicoPorId(Long id) {
         try {
             Optional<Servico> servico = servicoRepository.findById(id);

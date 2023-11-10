@@ -6,7 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import school.sptech.projetotophair.domain.servico.Servico;
 import school.sptech.projetotophair.service.ServicoService;
+import school.sptech.projetotophair.service.dto.servico.ServicoDto;
+import school.sptech.projetotophair.service.dto.servico.mapper.ServicoMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +24,16 @@ public class ServicoController {
     public ResponseEntity<Servico> cadastrar(@RequestBody Servico servico) {
         Servico servicoCadastrado = servicoService.cadastrarServico(servico);
         return ResponseEntity.status(201).body(servicoCadastrado);
+    }
+
+    @GetMapping("/empresa/{id}")
+    public ResponseEntity<List<ServicoDto>> buscarServicosPorEmpresaId(@PathVariable Long id){
+        List<Servico> servicos = servicoService.buscarServicosPorEmpresaId(id);
+        List<ServicoDto> dtos = new ArrayList<>();
+        for (Servico servicoDaVez: servicos) {
+            dtos.add(ServicoMapper.toServicoDto(servicoDaVez));
+        }
+        return ResponseEntity.ok(dtos);
     }
 
     @GetMapping("/{id}")
