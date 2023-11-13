@@ -1,5 +1,6 @@
 package school.sptech.projetotophair.domain.usuario;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
@@ -31,16 +32,20 @@ public class Usuario {
     private String senha;
     private String telefone;
     private Boolean isProfissional;
+    @Nullable
     @ManyToOne
     @JoinColumn(name = "fkServico", referencedColumnName = "idServico")
     private Servico servico;
+    @Nullable
     @ManyToOne
     @JoinColumn(name = "fkAgenda", referencedColumnName = "idAgenda")
     private Agenda agenda;
 
+    @Nullable
     @ManyToOne
     @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
     private Empresa empresa;
+    @Nullable
     @OneToOne
     @JoinColumn(name = "fkEndereco", referencedColumnName = "idEndereco")
     private Endereco endereco;

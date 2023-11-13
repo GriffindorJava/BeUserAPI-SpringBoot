@@ -1,5 +1,6 @@
 package school.sptech.projetotophair.domain.empresa;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.br.CNPJ;
@@ -23,6 +24,7 @@ public class Empresa {
     @JoinColumn(name = "fkEndereco", referencedColumnName = "idEndereco")
     private Endereco endereco;
 
+    @Nullable
     @OneToMany(mappedBy = "empresa")
     List<Avaliacao> avaliacoes;
 
