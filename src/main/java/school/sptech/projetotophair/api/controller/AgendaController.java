@@ -3,6 +3,7 @@ package school.sptech.projetotophair.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import school.sptech.projetotophair.api.pilha.PilhaObj;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
@@ -10,6 +11,7 @@ import school.sptech.projetotophair.service.AgendaService;
 import school.sptech.projetotophair.service.dto.agenda.UltimosAgendamentosDto;
 import school.sptech.projetotophair.service.dto.agenda.mapper.UltimosAgendamentosMapper;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -43,17 +45,32 @@ public class AgendaController {
             return ResponseEntity.status(200).body(agendaAtualizada.get());
     }
 
+//    @GetMapping("/ultimos-agendamentos/{id}")
+//    public ResponseEntity<UltimosAgendamentosDto> ultimosAgendamentos(@PathVariable Long id){
+//        Optional<Usuario> all = u.findById(id);
+//
+//        if (all.isEmpty()) {
+//            return ResponseEntity.notFound().build();
+//        }
+//
+//        UltimosAgendamentosDto dto = UltimosAgendamentosMapper.toDto(all.get());
+//
+//        return ResponseEntity.ok(dto);
+//    }
+
     @GetMapping("/ultimos-agendamentos/{id}")
-    public ResponseEntity<UltimosAgendamentosDto> ultimosAgendamentos(@PathVariable Long id){
+    public ResponseEntity<PilhaObj<Agenda>> ultimosAgendamentos(@PathVariable Long id){
         Optional<Usuario> all = u.findById(id);
 
         if (all.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
+        // Obtendo os últimos agendamentos da pilha
+        PilhaObj<Agenda> ultimosAgendamentos = agendaService.getUltimosAgendamentos();
         UltimosAgendamentosDto dto = UltimosAgendamentosMapper.toDto(all.get());
 
-        return ResponseEntity.ok(dto);
+        return ResponseEntity.ok(ultimosAgendamentos);
     }
 
     @DeleteMapping("/{id}")
